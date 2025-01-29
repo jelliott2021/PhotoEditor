@@ -1,0 +1,90 @@
+Classes:
+- MODEL
+-- ImageModel: Contains an image and a name associated with that image. Runs all the necessary
+    methods on an image like greyScaling, brightening, darkening, etc.
+-- Pixel: Represents an individual pixel with RGB values
+-- IImage: Represents a general image.
+-- IPixel: Represents a general pixel.
+
+- CONTROLLER
+-- BlueScale: Image Command that uses blue component to greyScale.
+-- Brighten: Image Command that brightens an image by a factor.
+-- Darken: Image Command that darkens an image by a factor.
+-- FlipHoriz: Flips an image horizontally.
+-- FlipVert: Flips an image vertically.
+-- GreenScale: Image Command that uses green component to greyScale.
+-- RedScale: Image Command that uses red component to greyScale.
+-- Intensity: Image Command that uses intensity component to greyScale.
+-- ValueScale: Image Command that uses value component to greyScale.
+-- Luma: Image Command that uses luma component to greyScale.
+-- AbstractFilterCommand: Image Command that performs a filtration on an image by using a given
+   kernel.
+-- AbstractColorCommand: Image Command that performs a color transformation on an image by using a
+   given matrix.
+-- AbstractGrayScaleCommand: Image Command that performs a gray scale on an image.
+-- RedColorTransform: Image Command that red-scales an image using a color matrix.
+-- BlueColorTransform: Image Command that blue-scales an image using a color matrix.
+-- GreenColorTransform: Image Command that green-scales an image using a color matrix.
+-- SepiaTransform: Image Command (extends AbstractColorCommand) that performs a sepia transformation
+   on an image.
+-- LumaColorTransform: Image Command (extends AbstractColorCommand) that performs a
+   luma transformation on an image.
+-- BlurCommand: Image Command (extends AbstractFilterCommand) that blurs an image.
+-- SharpenCommand: Image Command (extends AbstractFilterCommand) that sharpens an image.
+-- ImageCommand: Interface that represents an individual command to perform on an image.
+-- ImageController: Controller that allows a user to manipulate an image.
+-- ImageLoad: Loads an image from a ppm file and creates an image.
+-- ImageSaver: Saves an image into a ppm file.
+-- ImageUtil: Use it to read a PPM file and get grid of pixels.
+
+Script of Commands that program will accept:
+1. red-scale: Uses red component to perform greyscale.
+2. blue-scale: Uses blue component to perform greyscale.
+3. green-scale: Uses green component to perform greyscale.
+4. flipHoriz: Flips an image horizontally.
+5. flipVert: Flips an image vertically.
+6. luma: Uses luma component to perform greyscale.
+7. intensity: Uses intensity component to perform greyscale.
+8. value-scale: Uses value component to perform greyscale.
+9. brighten f: Brightens an image by an integer factor f.
+10. darken f: Darkens an image by an integer factor f.
+11. blur name: Blurs an image and names the new image to the given name.
+12. sharpen name: Sharpens an image and names the new image to the given name.
+13. sepia name: Performs a sepia transformation and names the new image to the given name.
+
+Run a controller and type on of the above commands in exactly the form it is written.
+
+WE MADE OUR IMAGE ON PIXIL AND USED GIMP TO CHECK COLORS.
+
+---------------------------------------------------------------------------------------------------
+GUI Assignment Updates
+
+-- No design changes had to be made and all images were created on Pixil and Gimp was used to check
+   colors and such.
+
+Added Items
+-- FrequencyCollector: Given an IImage, get the frequencies of the red, blue, green, and
+   intensity components.
+-- Frequencies: Class that implements FrequencyCollector to create an array list of frequencies
+   for the red, green, blue, and intensity components.
+
+View:
+-- ImageGUIView: A GUI based view that allows for the user to process an image using a
+   buttons and such.
+-- ImageFrame: Class that implements ImageGUIView that upon interacting with a features based
+   controller creates a GUI with buttons and spinners to allow the user to manipulate an image.
+-- HistogramPanel: Draws out a histogram so a user can see the frequencies of various pixel
+   components.
+
+Controller:
+-- ImageFeatures: A features based controller that works with a GUI to process images.
+-- ControllerFeatures: Class that implements ImageFeatures and works with a GUI such that
+   clicking on a GUI's buttons allows for commands to be performed on an object.
+
+The ImageProcess main was changed for this assignment. The main works in 3 ways:
+1. If the user provides no command line arguments, a GUI based view is created for the user to
+   interact with.
+2. If the user provides a command line argument of "-text", then the user can provide commands
+   using System.out
+3. If the user provides a command line argument of "-file file-path-name" then the program runs
+   a File Reader on the file and runs all the commands in the file.
